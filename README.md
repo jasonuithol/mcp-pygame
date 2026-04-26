@@ -20,16 +20,18 @@ services — the protocol is provider-agnostic.
 ## Usage
 
 ```bash
-# Build images (first time, or after Dockerfile changes)
-service/build-container.sh
-knowledge/build-container.sh
+./setup.sh                       # one-time, idempotent (builds both images)
 
-# Start
 service/start-container.sh
 knowledge/start-container.sh
 
-# First-time KB seed
-knowledge/seed.sh
+knowledge/seed.sh                # first-time KB seed
+```
+
+To validate setup works from bare state:
+
+```bash
+./clean.sh && ./setup.sh
 ```
 
 Both containers use host networking (ports above). The knowledge
