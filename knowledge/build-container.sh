@@ -3,9 +3,9 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 MODEL_DIR="$SCRIPT_DIR/models/all-MiniLM-L6-v2"
-SIBLING_MODEL="$HOME/Projects/claude-sandbox/mcp-knowledge/models/all-MiniLM-L6-v2"
+SIBLING_MODEL="$HOME/Projects/mcp-valheim/knowledge/models/all-MiniLM-L6-v2"
 
-# Reuse claude-sandbox's downloaded model if present — saves ~90MB on disk
+# Reuse mcp-valheim's downloaded model if present — saves ~90MB on disk
 # and avoids a second download.
 if [ ! -f "$MODEL_DIR/onnx/model.onnx" ]; then
     mkdir -p "$SCRIPT_DIR/models"
