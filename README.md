@@ -20,18 +20,18 @@ services — the protocol is provider-agnostic.
 ## Usage
 
 ```bash
-./setup.sh                       # one-time, idempotent (builds both images)
+./setup.sh                # one-time, idempotent (builds both images)
+./start.sh                # bring up both containers
+./stop.sh                 # shut them down (containers preserved for revival)
+./clean.sh                # remove containers + images (full teardown)
 
-service/start-container.sh
-knowledge/start-container.sh
-
-knowledge/seed.sh                # first-time KB seed
+knowledge/seed.sh         # first-time KB seed
 ```
 
 To validate setup works from bare state:
 
 ```bash
-./clean.sh && ./setup.sh
+./clean.sh && ./setup.sh && ./start.sh
 ```
 
 Both containers use host networking (ports above). The knowledge
