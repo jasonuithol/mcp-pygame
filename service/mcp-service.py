@@ -5,7 +5,7 @@ mcp-service.py — pygame-build
 Runs inside a Docker container. Exposes Python/pygame build + test tools to
 Claude Code.
 
-Register with Claude Code (run this inside the claude-pygame container):
+Register with Claude Code (run this inside the claude-sandbox-core container):
     claude mcp add pygame-build --transport http http://localhost:5172/mcp
 """
 

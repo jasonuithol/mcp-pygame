@@ -13,9 +13,10 @@ errors accumulate as retrievable context.
 
 ## Consumers
 
-Currently launched by [`claude-pygame`](../claude-pygame/) via its
-`start.sh`. Any MCP client speaking streamable HTTP can mount these
-services — the protocol is provider-agnostic.
+Launched by [`claude-sandbox-core`](https://github.com/jasonuithol/claude-sandbox-core)
+via `bin/start.sh pygame <project>` (the `pygame` domain conf lists
+this repo in `MCP_REPOS`). Any MCP client speaking streamable HTTP can
+mount these services — the protocol is provider-agnostic.
 
 ## Usage
 

@@ -60,7 +60,7 @@ echo "  Session: $K_SESSION"
 # ---------------------------------------------------------------------------
 
 echo ""
-echo "=== Seeding claude-pygame docs ==="
+echo "=== Seeding mcp-pygame docs ==="
 call_tool "$BASE" "$K_SESSION" 2 "seed_docs" \
     '{"docs_path":"/opt/projects/mcp-pygame/docs"}'
 

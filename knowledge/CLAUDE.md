@@ -1,12 +1,12 @@
 # mcp-knowledge — Python / pygame Knowledge Service
 
 A RAG-backed MCP service that accumulates knowledge from indexing project
-source, curated docs, and test failures. Runs alongside `mcp-build` in the
-claude-pygame sandbox.
+source, curated docs, and test failures. Runs alongside `service/`
+(`pygame-mcp-build`) inside `claude-sandbox-core`'s `pygame` domain.
 
-The Valheim-side service (`claude-sandbox/mcp-knowledge`) is this service's
-sibling; both share the same scaffolding but are kept isolated — only one
-sandbox runs at a time.
+The Valheim-side service (`mcp-valheim/knowledge`) is this service's
+sibling; both share the same scaffolding (via `mcp-knowledge-base`) but
+are kept isolated — only one sandbox runs at a time.
 
 ---
 
@@ -28,7 +28,7 @@ knowledge, not any single app.
 
 Tool executions in `mcp-build` fire fire-and-forget POSTs to `/ingest`. The
 router (`ingest/router.py`) decides what to index. See
-`claude/docs/INGEST_MCP.md` for the payload shape and routing table.
+`docs/INGEST_MCP.md` for the payload shape and routing table.
 
 Signals we care about:
 
@@ -131,7 +131,7 @@ mcp-knowledge/
 │   ├── chunker.py         ← Python source chunking + tag flag scaffolding
 │   ├── extractors.py      ← pygame PATTERN_TAGS, ast node walker, pytest report parser
 │   └── router.py          ← run_tests / lint routing, per-node-id fail→pass detection
-├── models/                ← embedding model (symlinked from claude-sandbox if present)
+├── models/                ← embedding model (downloaded by build-container.sh)
 └── knowledge/             ← ChromaDB persistent storage (gitignored)
 ```
 
@@ -147,7 +147,7 @@ First-time setup after `start-container.sh`:
 
 Which does:
 
-1. `seed_docs("/opt/projects/claude-pygame/claude/docs")`
+1. `seed_docs("/opt/projects/mcp-pygame/docs")`
 2. `seed_python_source("UltimatePyve", "/opt/projects/UltimatePyve")`
 
 After that, the knowledge base grows automatically from `run_tests` and
@@ -204,8 +204,8 @@ are far less likely to be flaky artefacts.
 
 ## Non-goals
 
-- Not a replacement for `claude/docs/*.md` — those remain the curated,
-  human-reviewed reference.
+- Not a replacement for the curated `docs/*.md` reference — those
+  remain the human-reviewed source of truth.
 - Not a general-purpose knowledge base — scoped to pygame / Python
   gamedev. Other Python domains (Django, FastAPI, etc.) would warrant
   their own sandbox.

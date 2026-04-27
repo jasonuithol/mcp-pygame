@@ -1,6 +1,6 @@
 FROM python:3.12-slim-bookworm
 
-LABEL maintainer="claude-pygame"
+LABEL maintainer="mcp-pygame"
 LABEL description="Python / pygame build + test tools MCP server"
 
 # System deps: build essentials so pygame-ce wheels with fallbacks compile if needed,
