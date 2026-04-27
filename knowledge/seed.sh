@@ -62,7 +62,7 @@ echo "  Session: $K_SESSION"
 echo ""
 echo "=== Seeding claude-pygame docs ==="
 call_tool "$BASE" "$K_SESSION" 2 "seed_docs" \
-    '{"docs_path":"/opt/projects/claude-pygame/claude/docs"}'
+    '{"docs_path":"/opt/projects/mcp-pygame/docs"}'
 
 # ---------------------------------------------------------------------------
 # Seed UltimatePyve source
